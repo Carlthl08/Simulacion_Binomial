@@ -1,0 +1,54 @@
+import random
+
+#Datos de la bonomial
+sumaBinomial=float()
+binomialFinal=float()
+n=int(input("Diguite el tamaño de la muestra: "))
+p=float(input("Digite la probabilidad del evento: ")) 
+q=float(1-p)
+
+#acumulada aleatoria es decir, a cuantas personas te estarias tomando aleatriamente. 
+x=random.randrange(1,700)
+
+print("Con una muestra aleatoria de al menos: ", x)
+
+#Calcular la acumualda de las X 
+for i in range(0,x):
+    
+    #Darle movimiento a las X
+    subx=i
+    
+   #caculo del factorial del numerador n!
+    factorialNum=1
+
+    if factorialNum!=0:
+        for i in range(1,n+1):
+            factorialNum=factorialNum*i
+
+    #Calculando el núemro de interacciones para el bucle 
+    tuturu=(n-subx)
+    
+    #Calculo del factorial (n-x)! 
+    factorialDem=1
+
+    if factorialDem!=0:
+        for i in range(1,tuturu+1):
+            factorialDem=factorialDem*i
+
+    #Calculo de x!
+    factorialDem2=1
+
+    if factorialDem2!=0:
+        for i in range (1,subx+1):
+         factorialDem2=factorialDem2*i
+
+    #Calculo de la combinación de a forma: n!/x!(n-x)!
+    factorial=factorialNum/(factorialDem*factorialDem2)
+
+    binomial=factorial*pow(p,subx)*pow(q,n-subx)
+    
+    sumaBinomial=sumaBinomial+binomial
+
+binomialFinal=1-sumaBinomial
+
+print("Probabbilidad de exito ", binomialFinal)
